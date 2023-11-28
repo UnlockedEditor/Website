@@ -1,0 +1,11 @@
+html{
+    filter:none;
+    -webkit-transition : -webkit-filter 500ms linear;
+    transition: all 0.5 ease-in-out;
+
+}
+.buttoninvert{
+    filter:none;
+    -webkit-transition : -webkit-filter 500ms linear;
+    transition: all 0.5 ease-in-out;
+}
