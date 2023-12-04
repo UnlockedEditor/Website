@@ -5,7 +5,7 @@ function isMobileDevice() {
 };
 
 if(isMobileDevice()){
-    if(!document.location.href.includes("MobileRedirect")){
+    if(!document.location.href.includes("MobileRedirect") && !document.location.href.includes("terms")){
         window.location.replace('./MobileRedirect.html');
     }
     
