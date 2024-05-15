@@ -5,7 +5,7 @@ export default function Home() {
     return (
       <div className="flex flex-col h-screen overflow-hidden">
         <Header />
-        <main className="flex-grow overflow-auto">
+        <main className="flex-grow overflow-hidden pt-10">
           <Plugins />
         </main>
       </div>
