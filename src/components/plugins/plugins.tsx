@@ -19,9 +19,7 @@ import { CalendarDays } from "lucide-react"
 export default function Plugins() {
   const plugins = [
     { title: 'Test', imageAlt: 'ABZÛ', imageUrl: '/fortnite.png', username: 'veygax', isPremium: false },
-    { title: 'Test Premium', imageAlt: 'Ad Infinitum', imageUrl: '/placeholder.svg', username: 'veygax', isPremium: true },
-    { title: 'Premium', imageAlt: 'Ad Infinitum', imageUrl: '/placeholder.svg', username: 'veygax', isPremium: false },
-    { title: 'Avatar Skin', imageAlt: 'Ad Infinitum', imageUrl: '/fortnite.png', username: 'oopyes', isPremium: false },
+
   ];
   const [selectedFile, setSelectedFile] = useState(null);
   function handleFileUpload(event: any) {
@@ -58,7 +56,7 @@ export default function Plugins() {
           Premium
         </Button>
       </div>
-      <div className={`grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8 min-w-screen ${plugins.length === 1 ? 'justify-items-center' : ''}`}>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8 min-w-screen">
         {plugins.map((plugin, index) => (
             <PluginCard key={index} {...plugin} />
         ))}
@@ -103,8 +101,9 @@ function PluginCard({title, imageAlt, imageUrl, isPremium, username /*downloadUr
                       <AvatarFallback>VC</AvatarFallback>
                     </Avatar>
                     <div className="space-y-1">
-                      <h4 className="text-sm font-semibold">VeygaX</h4>
+                      <h4 className="text-sm font-semibold">{username}</h4>
                       <p className="text-sm">
+                        {/* eslint-disable-next-line react/no-unescaped-entities */}
                         I am a plugin dev. Yep, that's me.
                       </p>
                       <div className="flex items-center pt-2">
