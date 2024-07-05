@@ -16,7 +16,7 @@ export default function Component() {
               width={500}
               height={500}
               />
-              <span className="sr-only">Acme Inc</span>
+              <span className="sr-only">UEditor</span>
             </Link>
           </div>
           <div className="hidden dark:block">
@@ -27,7 +27,7 @@ export default function Component() {
               width={500}
               height={500}
               />
-              <span className="sr-only">Acme Inc</span>
+              <span className="sr-only">UEditor</span>
             </Link>
           </div>
         </div>     
