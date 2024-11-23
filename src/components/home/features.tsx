@@ -106,21 +106,22 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
 export const EditModeSkeleton = () => {
   return (
     <div className="relative flex py-8 px-2 gap-10 h-[500px]">
-      <div className="w-full p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
-        <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
-          {/* TODO */}
-          <Image
-            src="/linear.webp"
-            alt="header"
-            width={800}
-            height={800}
+      <div className="w-full p-5 mx-auto bg-white dark:bg-neutral-900 shadow-1xl group h-full">
+        <div className="flex flex-1 w-full h-full flex-col space-y-2">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="h-full w-full aspect-square object-cover object-left-top rounded-sm"
-          />
+          >
+            <source src="/showcases/editmodecamera.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
-      <div className="absolute bottom-0 z-40 inset-x-0 h-60 bg-gradient-to-t from-white dark:from-black via-white dark:via-black to-transparent w-full pointer-events-none" />
-      <div className="absolute top-0 z-40 inset-x-0 h-60 bg-gradient-to-b from-white dark:from-black via-transparent to-transparent w-full pointer-events-none" />
+      <div className="absolute bottom-0 z-40 inset-x-0 h-32 bg-gradient-to-t from-white/50 dark:from-black/50 to-transparent w-full pointer-events-none" />
+      <div className="absolute top-0 z-40 inset-x-0 h-32 bg-gradient-to-b from-white/50 dark:from-black/50 to-transparent w-full pointer-events-none" />
     </div>
   );
 };
@@ -128,16 +129,16 @@ export const EditModeSkeleton = () => {
 export const VideoSkeleton = () => {
   return (
     <Link
-      href="https://www.youtube.com/watch?v=RPa3_AD1_Vs"
-      target="__blank"
-      className="relative flex gap-10  h-full group/image"
+      href="https://www.youtube.com/watch?v=YCjNT9qGjh4" // This uses the HL2 documentary as a placeholder cos we don't have a video yet
+      target="_blank"
+      className="relative flex gap-10 h-full group/image"
     >
       <div className="w-full  mx-auto bg-transparent dark:bg-transparent group h-full">
         <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
           {/* TODO */}
           <IconBrandYoutubeFilled className="h-20 w-20 absolute z-10 inset-0 text-red-500 m-auto " />
           <Image
-            src="https://assets.aceternity.com/fireship.jpg"
+            src="https://i3.ytimg.com/vi/YCjNT9qGjh4/maxresdefault.jpg"
             alt="header"
             width={800}
             height={800}

@@ -38,7 +38,7 @@ export default function Header() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-violet-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
+              className="bg-white text-black px-4 py-2 rounded-lg flex items-center space-x-2"
             >
               <Download className="h-5 w-5" />
               <span>Download the Launcher</span>
