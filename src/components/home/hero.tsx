@@ -36,7 +36,7 @@ export default function Hero() {
           onClick={() => window.open('https://dsc.gg/ueditor', '_blank')}
         >
           <div className="flex items-start space-x-3">
-            <FaDiscord className="h-10 w-10 text-violet-400 flex-shrink-0" />
+            <FaDiscord className="h-10 w-10 text-blue-500 flex-shrink-0" />
             <div>
               <p className="text-white font-medium">Join our community</p>
               <p className="text-gray-300 text-sm">
@@ -95,7 +95,7 @@ export default function Hero() {
               rel="noopener noreferrer" 
               className="border border-white/30 text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition inline-block"
             >
-              View Docs
+              View Documentation
             </a>
           </motion.div>
         </div>
