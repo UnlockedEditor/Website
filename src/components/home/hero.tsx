@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FaDiscord } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -64,45 +65,50 @@ export default function Hero() {
         </motion.div>
 
         <div className="text-center max-w-4xl mx-auto backdrop-blur-md bg-black/20 p-8 rounded-2xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl md:text-6xl font-bold text-white mb-6"
+          <motion.div
+              initial={{opacity: 0, y: 20}}
+              animate={{opacity: 1, y: 0}}
+              transition={{duration: 0.5, delay: 0.2}}
+              className="mb-6 flex justify-center"
           >
-            Build the Future with UEditor
-          </motion.h1>
+            <Image
+                src="/Untitblk-1.png"
+                alt="Logo"
+                width={700} // Adjust the width as needed
+                height={700} // Adjust the height as needed
+            />
+          </motion.div>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-xl text-gray-300 mb-8"
+              initial={{opacity: 0, y: 20}}
+              animate={{opacity: 1, y: 0}}
+              transition={{duration: 0.5, delay: 0.4}}
+              className="text-xl text-gray-300 mb-8"
           >
             The most advanced development platform for building next-generation <span className="font-bold">Unreal Engine</span> mods
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
+              initial={{opacity: 0, y: 20}}
+              animate={{opacity: 1, y: 0}}
+              transition={{duration: 0.5, delay: 0.6}}
+              className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
           >
             <button className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-white/80 transition">
               Download Now
             </button>
             <a
-              href="https://docs.ueditor.lol"
-              target="_blank"
-              rel="noopener noreferrer" 
-              className="border border-white/30 text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition inline-block"
+                href="https://docs.ueditor.lol"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-white/30 text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition inline-block"
             >
               View Documentation
             </a>
           </motion.div>
         </div>
       </div>
-      
+
       {/* Bottom divider */}
-      <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+      <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"/>
     </div>
   );
 }
