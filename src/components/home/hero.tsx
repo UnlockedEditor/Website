@@ -17,9 +17,9 @@ export default function Hero() {
         <source src="/your-video.mp4" type="video/mp4" />
       </video> */}
       <iframe 
-        src="https://www.youtube-nocookie.com/embed/91jmPsnO2a8?si=_bXnS3vL-WQ1dMXa&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&playlist=91jmPsnO2a8&loop=1" 
+        src="https://www.youtube-nocookie.com/embed/G0krlwYO19Q?autoplay=1&loop=1&playlist=G0krlwYO19Q&controls=0&mute=1&vq=hd1080"
         title="YouTube video player" 
-        className="absolute inset-0 w-screen h-screen object-cover border-0 scale-[1.5]"
+        className="absolute inset-0 w-screen h-screen object-cover border-0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
