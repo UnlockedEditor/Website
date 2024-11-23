@@ -13,7 +13,7 @@ export default function Features() {
       title: "Bend reality to your will",
       description:
         "Modify any object in your games.",
-      skeleton: <SkeletonOne />,
+      skeleton: <EditModeSkeleton />,
       className:
         "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
     },
@@ -21,14 +21,14 @@ export default function Features() {
       title: "Support for all your favorite games",
       description:
         "We support *nearly* all Unreal Engine 4-5 games.",
-      skeleton: <SkeletonTwo />,
+      skeleton: <GamesSkeleton />,
       className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
     },
     {
       title: "Get started in seconds",
       description:
         "With our simple to use launcher, you can be up and running in seconds.",
-      skeleton: <SkeletonThree />,
+      skeleton: <VideoSkeleton />,
       className:
         "col-span-1 lg:col-span-3 lg:border-r  dark:border-neutral-800",
     },
@@ -36,7 +36,7 @@ export default function Features() {
       title: "Create your own plugins for maximum customization.",
       description:
         "Our plugin system allows you to change any aspect of your game.",
-      skeleton: <SkeletonFour />,
+      skeleton: <GlobeSkeleton />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-none",
     },
   ];
@@ -103,7 +103,7 @@ const FeatureDescription = ({ children }: { children?: React.ReactNode }) => {
   );
 };
 
-export const SkeletonOne = () => {
+export const EditModeSkeleton = () => {
   return (
     <div className="relative flex py-8 px-2 gap-10 h-[500px]">
       <div className="w-full p-5  mx-auto bg-white dark:bg-neutral-900 shadow-2xl group h-full">
@@ -125,7 +125,7 @@ export const SkeletonOne = () => {
   );
 };
 
-export const SkeletonThree = () => {
+export const VideoSkeleton = () => {
   return (
     <Link
       href="https://www.youtube.com/watch?v=RPa3_AD1_Vs"
@@ -149,13 +149,21 @@ export const SkeletonThree = () => {
   );
 };
 
-export const SkeletonTwo = () => {
-  const images = [
-    "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+export const GamesSkeleton = () => {
+  const firstRowImages = [
+    "/examplegames/five-nights-at-freddys-security-breach-cover.webp",
+    "/examplegames/one_armed_cook-square.webp",
+    "/examplegames/poppyplaytime.webp",
     "https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  ];
+
+  const secondRowImages = [
+    "/examplegames/deadbydaylight.webp",
+    "/examplegames/palworld.webp",
+    "/examplegames/lethalcompany.webp",
+    "/examplegames/readyornot.webp",
+    "/examplegames/fortnite.webp",
   ];
 
   const imageVariants = {
@@ -172,9 +180,8 @@ export const SkeletonTwo = () => {
   };
   return (
     <div className="relative flex flex-col items-start p-8 gap-10 h-[500px] overflow-hidden">
-      {/* TODO */}
       <div className="flex flex-row -ml-20">
-        {images.map((image, idx) => (
+        {firstRowImages.map((image, idx) => (
           <motion.div
             variants={imageVariants}
             key={"images-first" + idx}
@@ -196,7 +203,7 @@ export const SkeletonTwo = () => {
         ))}
       </div>
       <div className="flex flex-row">
-        {images.map((image, idx) => (
+        {secondRowImages.map((image, idx) => (
           <motion.div
             key={"images-second" + idx}
             style={{
@@ -224,7 +231,7 @@ export const SkeletonTwo = () => {
   );
 };
 
-export const SkeletonFour = () => {
+export const GlobeSkeleton = () => {
   return (
     <div className="h-60 md:h-60  flex flex-col items-center relative bg-transparent dark:bg-transparent mt-10">
       <Globe className="absolute -right-10 md:-right-10 -bottom-80 md:-bottom-72" />
