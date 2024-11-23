@@ -32,7 +32,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed top-24 right-4 md:right-24 bg-black/50 rounded-lg p-4 max-w-xs cursor-pointer hover:bg-white/20 transition-colors"
+          className="absolute top-24 right-4 md:right-24 bg-black/50 rounded-lg p-4 max-w-xs cursor-pointer hover:bg-white/20 transition-colors"
           onClick={() => window.open('https://dsc.gg/ueditor', '_blank')}
         >
           <div className="flex items-start space-x-3">
