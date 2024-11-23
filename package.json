@@ -1,11 +1,11 @@
 {
-  "name": "workspace",
-  "version": "0.1.0",
+  "name": "ueditor-website",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "pm2 start pnpm --name 'ueditor-website' -- start",
     "lint": "next lint"
   },
   "dependencies": {
