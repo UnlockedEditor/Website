@@ -2,6 +2,7 @@
 
 import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, XAxis, YAxis, CartesianGrid, LabelList, Cell } from "recharts"
+import { useEffect, useState } from "react"
 
 import {
   Card,
@@ -18,11 +19,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-const chartData = [
-  { action: "ActorsDestroyed", count: 186, color: "hsl(0 84% 60%)" },
-  { action: "ActorsSpawned", count: 305, color: "hsl(142 72% 29%)" },
-]
-
 const chartConfig = {
   count: {
     label: "Count",
@@ -34,8 +30,36 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export default function Stats() {
+  const [chartData, setChartData] = useState([
+    { action: "ActorsDestroyed", count: 0, color: "hsl(0 84% 60%)" },
+    { action: "ActorsSpawned", count: 0, color: "hsl(142 72% 29%)" },
+  ])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/stats')
+        const data = await response.json()
+        
+        if (response.ok) {
+          setChartData([
+            { action: "ActorsDestroyed", count: data.ActorsDestroyed, color: "hsl(0 84% 60%)" },
+            { action: "ActorsSpawned", count: data.ActorsSpawned, color: "hsl(142 72% 29%)" },
+          ])
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+    
+    const interval = setInterval(fetchData, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
-    <div className="relative z-20  lg:py-20 max-w-7xl mx-auto">
+    <div className="relative z-20 lg:py-20 max-w-7xl mx-auto">
         <Card>
             <CardHeader>
                 <CardTitle>Stats</CardTitle>
@@ -93,10 +117,10 @@ export default function Stats() {
             </CardContent>
             <CardFooter className="flex-col items-start gap-2 text-sm">
                 <div className="flex gap-2 font-medium leading-none">
-                Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                Real-time actor statistics
                 </div>
                 <div className="leading-none text-muted-foreground">
-                Showing total visitors for the last 6 months
+                Updates every 5 seconds
                 </div>
             </CardFooter>
         </Card>
