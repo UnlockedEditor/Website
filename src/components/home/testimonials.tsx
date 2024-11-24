@@ -8,10 +8,10 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 const testimonials = [
     {
         quote:
-          "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-        name: "Mag",
-        designation: "Totally does not work for UEditor",
-        src: "https://cdn.discordapp.com/avatars/871141991340204042/7ac54b7352e2c6620c75fa71057022ee.webp",
+          "UEditor is a great fu***ng tool with amazing potential. I truly believe this could fully replace UUU in some ways. I really like the idea of the plugin store. Someone could build a plugin for UE without having to go through the trouble of learning how to mod the game itself. Along with that, having a way to load maps, place new actors into the world, and view models all directly from within the game itself is amazing.",
+        name: "Hax",
+        designation: "UTester",
+        src: "https://cdn.discordapp.com/avatars/302734867425132545/c3fe6826b2bdf1bc827ed1e8c728a7e4?size=1024",
       },
       {
         quote:
