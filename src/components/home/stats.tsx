@@ -31,8 +31,8 @@ const chartConfig = {
 
 export default function Stats() {
   const [chartData, setChartData] = useState([
-    { action: "ActorsDestroyed", count: 0, color: "hsl(0 84% 60%)" },
-    { action: "ActorsSpawned", count: 0, color: "hsl(142 72% 29%)" },
+    { action: "Actors Destroyed", count: 0, color: "hsl(0 84% 60%)" },
+    { action: "Actors Spawned", count: 0, color: "hsl(142 72% 29%)" },
   ])
 
   useEffect(() => {
@@ -43,8 +43,8 @@ export default function Stats() {
         
         if (response.ok) {
           setChartData([
-            { action: "ActorsDestroyed", count: data.ActorsDestroyed, color: "hsl(0 84% 60%)" },
-            { action: "ActorsSpawned", count: data.ActorsSpawned, color: "hsl(142 72% 29%)" },
+            { action: "Actors Destroyed", count: data.ActorsDestroyed, color: "hsl(0 84% 60%)" },
+            { action: "Actors Spawned", count: data.ActorsSpawned, color: "hsl(142 72% 29%)" },
           ])
         }
       } catch (error) {
@@ -60,9 +60,19 @@ export default function Stats() {
 
   return (
     <div className="relative z-20 lg:py-20 max-w-7xl mx-auto">
+        <div className="px-8">
+          <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+            See what's happening right now
+          </h4>
+
+          <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+            See what's being created with UEditor all over the world.
+          </p>
+        </div>
+
         <Card>
             <CardHeader>
-                <CardTitle>Stats</CardTitle>
+                <CardTitle>Stats - Actors</CardTitle>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
@@ -87,7 +97,7 @@ export default function Stats() {
                     <XAxis dataKey="count" type="number" hide />
                     <ChartTooltip
                     cursor={false}
-                    content={<ChartTooltipContent indicator="line" />}
+                    content={<ChartTooltipContent indicator="line" className="bg-black" />}
                     />
                     <Bar
                     dataKey="count"
@@ -101,14 +111,14 @@ export default function Stats() {
                         dataKey="action"
                         position="insideLeft"
                         offset={8}
-                        className="fill-[--color-label]"
+                        className="fill-[--color-label] font-bold"
                         fontSize={12}
                     />
                     <LabelList
                         dataKey="count"
                         position="right"
                         offset={8}
-                        className="fill-foreground"
+                        className="fill-white"
                         fontSize={12}
                     />
                     </Bar>
