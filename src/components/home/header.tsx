@@ -63,7 +63,7 @@ export default function Header() {
           >
             <div className="flex flex-col space-y-4">
               <Link
-                href="#features"
+                href="#featurebento"
                 className="text-gray-300 hover:text-white transition"
                 onClick={() => setIsMenuOpen(false)}
               >
