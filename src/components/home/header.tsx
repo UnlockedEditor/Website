@@ -29,7 +29,7 @@ export default function Header() {
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="#features" className="text-gray-300 hover:text-white transition">
+            <Link href="#featurebento" className="text-gray-300 hover:text-white transition">
               Features
             </Link>
             <Link href="#testimonials" className="text-gray-300 hover:text-white transition">

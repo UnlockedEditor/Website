@@ -1,14 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaDiscord, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaDiscord, FaGithub } from "react-icons/fa";
+import { FaXTwitter } from 'react-icons/fa6';
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {
   const footerLinks = {
     Product: [
-      { title: 'Features', href: '#features' },
+      { title: 'Features', href: '#featurebento' },
       //{ title: 'Pricing', href: '/pricing' },
       { title: 'Documentation', href: 'https://docs.ueditor.lol' },
       //{ title: 'Changelog', href: '/changelog' }
@@ -47,7 +48,7 @@ export default function Footer() {
                 whileHover={{ scale: 1.1 }}
                 className="text-gray-400 hover:text-white"
               >
-                <FaTwitter className="h-6 w-6" />
+                <FaXTwitter className="h-6 w-6" />
               </motion.a>
               <motion.a
                 href="https://github.com/UnlockedEditor"
