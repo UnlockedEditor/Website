@@ -1,6 +1,6 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
+// @ts-ignore
 import { Bar, BarChart, XAxis, YAxis, CartesianGrid, LabelList, Cell } from "recharts"
 import { useEffect, useState } from "react"
 
@@ -18,6 +18,7 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
+import React from "react";
 
 const chartConfig = {
     count: {
@@ -29,7 +30,7 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
-export default function Stats() {
+export default React.memo(function Stats() {
     const [chartData, setChartData] = useState([
         { action: "Actors Destroyed", count: 0, color: "hsl(0 84% 60%)" },
         { action: "Actors Spawned", count: 0, color: "hsl(142 72% 29%)" },
@@ -77,7 +78,6 @@ export default function Stats() {
                 <CardContent>
                     <ChartContainer config={chartConfig}>
                         <BarChart
-                            accessibilityLayer
                             data={chartData}
                             layout="vertical"
                             margin={{
@@ -91,7 +91,7 @@ export default function Stats() {
                                 tickLine={false}
                                 tickMargin={10}
                                 axisLine={false}
-                                tickFormatter={(value) => value.slice(0, 3)}
+                                tickFormatter={(value: string) => value.slice(0, 3)}
                                 hide
                             />
                             <XAxis dataKey="count" type="number" hide />
@@ -136,4 +136,4 @@ export default function Stats() {
             </Card>
         </div>
     )
-}
+});

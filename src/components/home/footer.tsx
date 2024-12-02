@@ -5,8 +5,9 @@ import { FaDiscord, FaGithub } from "react-icons/fa";
 import { FaXTwitter } from 'react-icons/fa6';
 import Link from "next/link";
 import Image from "next/image";
+import React from "react";
 
-export default function Footer() {
+export default React.memo(function Footer() {
   const footerLinks = {
     Product: [
       { title: 'Features', href: '#featurebento' },
@@ -102,4 +103,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+});

@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import MillionLint from '@million/lint';
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
     images: {
         remotePatterns: [
             {
@@ -32,9 +34,18 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'drive.google.com',
+                port: '',
+                pathname: '/**',
+            },
         ],
         dangerouslyAllowSVG: true,
     },
 };
 
-export default nextConfig;
+export default MillionLint.next({
+    enabled: true,
+    rsc: true
+})(nextConfig);

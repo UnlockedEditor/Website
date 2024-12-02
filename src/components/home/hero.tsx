@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import { FaDiscord } from "react-icons/fa";
 import Image from "next/image";
+import React from "react";
 
-export default function Hero() {
+export default React.memo(function Hero() {
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
       {/* Background Video */}
@@ -111,4 +112,4 @@ export default function Hero() {
       <div className="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"/>
     </div>
   );
-}
+});

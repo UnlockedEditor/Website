@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaDiscord } from "react-icons/fa";
-import { Menu } from "lucide-react";
+// @ts-ignore
+import { Menu, Download } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
-import { Download } from "lucide-react";
+import React from "react";
 
-export default function Header() {
+export default React.memo(function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
@@ -90,4 +90,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+});

@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
-import { IconBrandYoutubeFilled } from "@tabler/icons-react";
-import Link from "next/link";
-import { motion, useAnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
 
-export default function Features() {
+export default React.memo(function Features() {
   const features = [
     {
       title: "Shape Your World",
@@ -47,15 +45,9 @@ export default function Features() {
         </div>
       </div>
   );
-}
+});
 
-const FeatureCard = ({
-                       children,
-                       className,
-                     }: {
-  children?: React.ReactNode;
-  className?: string;
-}) => {
+const FeatureCard = ({ children, className }: { children?: React.ReactNode; className?: string }) => {
   return (
       <div className={cn(`p-4 sm:p-8 relative overflow-hidden`, className)}>
         {children}
@@ -108,7 +100,7 @@ export const EditModeSkeleton = () => {
   );
 };
 
-export const VideoSkeleton = () => {
+/*export const VideoSkeleton = () => {
   return (
       <Link
           href="https://www.youtube.com/watch?v=YCjNT9qGjh4" // This uses the HL2 documentary as a placeholder cos we don't have a video yet
@@ -117,7 +109,6 @@ export const VideoSkeleton = () => {
       >
         <div className="w-full  mx-auto bg-transparent dark:bg-transparent group h-full">
           <div className="flex flex-1 w-full h-full flex-col space-y-2  relative">
-            {/* TODO */}
             <IconBrandYoutubeFilled className="h-20 w-20 absolute z-10 inset-0 text-red-500 m-auto " />
             <Image
                 src="https://i3.ytimg.com/vi/YCjNT9qGjh4/maxresdefault.jpg"
@@ -130,7 +121,7 @@ export const VideoSkeleton = () => {
         </div>
       </Link>
   );
-};
+};*/
 
 export const GamesSkeleton = () => {
   const images = [
@@ -160,131 +151,39 @@ export const GamesSkeleton = () => {
     },
   ];
 
-  // Create rotation values for each row that will be reused
-  const firstRowRotations = images
-      .filter(img => img.row === 1)
-      .map(() => Math.random() * 20 - 10);
-  const secondRowRotations = images
-      .filter(img => img.row === 2)
-      .map(() => Math.random() * 20 - 10);
+  const rotations = useMemo(() => ({
+    firstRow: [-6, -8, -2, -6, -8, -2],
+    secondRow: [6, -4, -5, 6, -4, -5]
+  }), []);
 
-  const imageVariants = {
-    whileHover: {
-      scale: 1.1,
-      rotate: 0,
-      zIndex: 100,
-    },
-    whileTap: {
-      scale: 1.1,
-      rotate: 0,
-      zIndex: 100,
-    },
-  };
+  const firstRow = useMemo(() => (
+    <Row
+      images={images.filter(img => img.row === 1)}
+      rotations={rotations.firstRow}
+    />
+  ), [images, rotations.firstRow]);
 
-  const rowVariants = {
-    animate: {
-      x: [0, -1035],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 20,
-          ease: "linear",
-        },
-      },
-    },
-  };
-
-  const reverseRowVariants = {
-    animate: {
-      x: [-1035, 0],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 20,
-          ease: "linear",
-        },
-      },
-    },
-  };
-
-  const Row = ({ images, rotations, reverse = false }: {
-    images: Array<{ src: string; row: number }>;
-    rotations: number[];
-    reverse?: boolean
-  }) => (
-      <motion.div
-          className="flex space-x-8 md:space-x-12"
-          variants={reverse ? reverseRowVariants : rowVariants}
-          animate="animate"
-      >
-        {images.map((image, idx) => (
-            <motion.div
-                variants={imageVariants}
-                key={`row-${reverse ? '2' : '1'}-${idx}`}
-                style={{
-                  rotate: rotations[idx],
-                }}
-                whileHover="whileHover"
-                whileTap="whileTap"
-                className="rounded-xl p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0"
-            >
-              <Image
-                  src={image.src}
-                  alt="game image"
-                  width="500"
-                  height="500"
-                  className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover"
-              />
-            </motion.div>
-        ))}
-        {/* Duplicate the images for seamless loop */}
-        {images.map((image, idx) => (
-            <motion.div
-                variants={imageVariants}
-                key={`row-${reverse ? '2' : '1'}-clone-${idx}`}
-                style={{
-                  rotate: rotations[idx],
-                }}
-                whileHover="whileHover"
-                whileTap="whileTap"
-                className="rounded-xl p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0"
-            >
-              <Image
-                  src={image.src}
-                  alt="game image"
-                  width="500"
-                  height="500"
-                  className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover"
-              />
-            </motion.div>
-        ))}
-      </motion.div>
-  );
+  const secondRow = useMemo(() => (
+    <Row
+      images={images.filter(img => img.row === 2)}
+      rotations={rotations.secondRow}
+      reverse
+    />
+  ), [images, rotations.secondRow]);
 
   return (
-      <div className="relative flex flex-col gap-20 h-[500px] overflow-hidden">
-        {/* First Row */}
-        <div className="flex overflow-hidden">
-          <Row
-              images={images.filter(img => img.row === 1)}
-              rotations={firstRowRotations}
-          />
-        </div>
-
-        {/* Second Row */}
-        <div className="flex overflow-hidden">
-          <Row
-              images={images.filter(img => img.row === 2)}
-              rotations={secondRowRotations}
-              reverse
-          />
-        </div>
-
-        <div className="absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent h-full pointer-events-none" />
-        <div className="absolute right-0 z-[100] inset-y-0 w-20 bg-gradient-to-l from-white dark:from-black to-transparent h-full pointer-events-none" />
+    <div className="relative flex flex-col gap-20 h-[500px] overflow-hidden">
+      <div className="flex overflow-hidden">
+        {firstRow}
       </div>
+
+      <div className="flex overflow-hidden">
+        {secondRow}
+      </div>
+
+      <div className="absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-white dark:from-black to-transparent h-full pointer-events-none" />
+      <div className="absolute right-0 z-[100] inset-y-0 w-20 bg-gradient-to-l from-white dark:from-black to-transparent h-full pointer-events-none" />
+    </div>
   );
 };
 
@@ -342,4 +241,107 @@ export const Globe = ({ className }: { className?: string }) => {
           className={className}
       />
   );
+};
+
+const Row = ({ images, rotations, reverse = false }: {
+  images: Array<{ src: string; row: number }>;
+  rotations: number[];
+  reverse?: boolean
+}) => (
+  <motion.div
+    className="flex space-x-8 md:space-x-12"
+    variants={reverse ? reverseRowVariants : rowVariants}
+    animate="animate"
+  >
+    {images.map((image, idx) => (
+        <motion.div
+            variants={imageVariants}
+            initial="initial"
+            key={`row-${reverse ? '2' : '1'}-${idx}`}
+            style={{
+              rotate: rotations[idx],
+              willChange: "transform"
+            }}
+            whileHover="whileHover"
+            whileTap="whileTap"
+            className="rounded-xl p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0"
+        >
+          <Image
+              src={image.src}
+              alt="game image"
+              width="500"
+              height="500"
+              className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover"
+          />
+        </motion.div>
+    ))}
+    {/* Duplicate images with same rotations */}
+    {images.map((image, idx) => (
+        <motion.div
+            variants={imageVariants}
+            key={`row-${reverse ? '2' : '1'}-clone-${idx}`}
+            style={{
+              rotate: rotations[idx],
+              willChange: 'transform'
+            }}
+            whileHover="whileHover"
+            whileTap="whileTap"
+            className="rounded-xl p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0"
+        >
+          <Image
+              src={image.src}
+              alt="game image"
+              width="500"
+              height="500"
+              className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover"
+          />
+        </motion.div>
+    ))}
+  </motion.div>
+);
+
+const imageVariants = {
+  initial: {
+    opacity: 0,
+    transform: "translateZ(-100px) scale(0.9) rotate(-4deg)",
+    willChange: "transform"
+  },
+  whileHover: {
+    scale: 1.1,
+    rotate: 0,
+    zIndex: 100,
+  },
+  whileTap: {
+    scale: 1.1,
+    rotate: 0,
+    zIndex: 100,
+  },
+};
+
+const rowVariants = {
+  animate: {
+    x: [0, -1035],
+    transition: {
+      x: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 20,
+        ease: "linear",
+      },
+    },
+  },
+};
+
+const reverseRowVariants = {
+  animate: {
+    x: [-1035, 0],
+    transition: {
+      x: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 20,
+        ease: "linear",
+      },
+    },
+  },
 };
