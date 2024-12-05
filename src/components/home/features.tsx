@@ -249,6 +249,7 @@ const Row = ({ images, rotations, reverse = false }: {
   reverse?: boolean
 }) => (
   <motion.div
+    // @ts-ignore
     className="flex space-x-8 md:space-x-12"
     variants={reverse ? reverseRowVariants : rowVariants}
     animate="animate"
@@ -264,6 +265,7 @@ const Row = ({ images, rotations, reverse = false }: {
             }}
             whileHover="whileHover"
             whileTap="whileTap"
+            // @ts-ignore
             className="rounded-xl p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0"
         >
           <Image
@@ -286,6 +288,7 @@ const Row = ({ images, rotations, reverse = false }: {
             }}
             whileHover="whileHover"
             whileTap="whileTap"
+            // @ts-ignore
             className="rounded-xl p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0"
         >
           <Image

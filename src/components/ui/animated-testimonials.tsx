@@ -59,14 +59,18 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }: { testi
     };
   }, []);
 
-  const getImageAnimateProps = useMemo(() => (index: number) => ({
-    opacity: isActive(index) ? 1 : 0.7,
-    scale: isActive(index) ? 1 : 0.95,
-    z: isActive(index) ? 0 : -100,
-    transform: `translateZ(${isActive(index) ? 0 : -100}px) scale(${isActive(index) ? 1 : 0.95}) rotate(${isActive(index) ? 0 : 7}deg)`,
-    zIndex: isActive(index) ? 10 : testimonials.length + 2 - index,
-    y: isActive(index) ? [0, -80, 0] : 0,
-  }), [isActive, testimonials.length]);
+  const getImageAnimateProps = useMemo(() => {
+    const isActive = (index: number) => index === active;
+    
+    return (index: number) => ({
+      opacity: isActive(index) ? 1 : 0.7,
+      scale: isActive(index) ? 1 : 0.95,
+      z: isActive(index) ? 0 : -100,
+      transform: `translateZ(${isActive(index) ? 0 : -100}px) scale(${isActive(index) ? 1 : 0.95}) rotate(${isActive(index) ? 0 : 7}deg)`,
+      zIndex: isActive(index) ? 10 : testimonials.length + 2 - index,
+      y: isActive(index) ? [0, -80, 0] : 0,
+    });
+  }, [active, testimonials.length]);
 
   const textMotionProps = useMemo(() => ({
     initial: {
@@ -111,7 +115,11 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }: { testi
           key={testimonial.src}
           {...imageMotionProps}
           animate={getImageAnimateProps(index)}
-          className="absolute inset-0 origin-bottom"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            transformOrigin: 'bottom'
+          }}
         >
           <Image
             src={testimonial.src}
@@ -138,14 +146,24 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }: { testi
           <motion.div
             key={active}
             {...textMotionProps}
+            style={{
+              color: 'rgb(115 115 115)', // text-gray-500
+            }}
           >
-            <h3 className="text-2xl font-bold dark:text-white text-black">
+            <h3 className="text-2xl font-bold text-white">
               {testimonials[active].name}
             </h3>
-            <p className="text-sm text-gray-500 dark:text-neutral-500">
+            <p className="text-sm text-neutral-500">
               {testimonials[active].designation}
             </p>
-            <motion.p className="text-lg text-gray-500 mt-8 dark:text-neutral-300">
+            <motion.div
+              style={{
+                fontSize: '1.125rem',
+                lineHeight: '1.75rem',
+                color: 'rgb(163 163 163)', // text-neutral-300
+                marginTop: '2rem'
+              }}
+            >
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -154,12 +172,14 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }: { testi
                     ...wordMotionProps.transition,
                     delay: 0.02 * index,
                   }}
-                  className="inline-block"
+                  style={{
+                    display: 'inline-block'
+                  }}
                 >
                   {word}&nbsp;
                 </motion.span>
               ))}
-            </motion.p>
+            </motion.div>
           </motion.div>
           <div className="flex gap-4 pt-12 md:pt-0">
             <button
