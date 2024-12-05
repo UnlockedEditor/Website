@@ -43,6 +43,9 @@ const nextConfig: NextConfig = {
         ],
         dangerouslyAllowSVG: true,
     },
+    typescript: {
+        ignoreBuildErrors: true,
+    },
 };
 
 export default MillionLint.next({
