@@ -18,6 +18,7 @@ export default React.memo(function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
+    { link: "https://forum.ueditor.lol", label: "Forums" },
     { link: "#featurebento", label: "Features" },
     { link: "#testimonials", label: "Testimonials" }
   ];
