@@ -5,6 +5,12 @@ import { FaDiscord } from "react-icons/fa";
 import Image from "next/image";
 import React from "react";
 
+const LAUNCHER_VERSION = "0.1.0";
+
+const handleDownload = () => {
+  window.location.href = `https://api.ueditor.lol/download/download-launcher/${LAUNCHER_VERSION}`;
+};
+
 export default React.memo(function Hero() {
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
@@ -93,7 +99,10 @@ export default React.memo(function Hero() {
               transition={{duration: 0.5, delay: 0.6}}
               className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
           >
-            <button className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-white/80 transition">
+            <button 
+              className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-white/80 transition"
+              onClick={handleDownload}
+            >
               Download Now
             </button>
             <a

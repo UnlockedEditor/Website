@@ -8,6 +8,12 @@ import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 
+const LAUNCHER_VERSION = "0.1.0";
+
+const handleDownload = () => {
+  window.location.href = `https://api.ueditor.lol/download/download-launcher/${LAUNCHER_VERSION}`;
+};
+
 export default React.memo(function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -47,6 +53,7 @@ export default React.memo(function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-black px-4 py-2 rounded-lg flex items-center space-x-2"
+              onClick={handleDownload}
             >
               <Download className="h-5 w-5" />
               <span>Download the Launcher</span>
@@ -80,7 +87,10 @@ export default React.memo(function Header() {
                   {link.label}
                 </Link>
               ))}
-              <button className="bg-violet-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2">
+              <button 
+                className="bg-violet-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
+                onClick={handleDownload}
+              >
                 <Download className="h-5 w-5" />
                 <span>Download</span>
               </button>
