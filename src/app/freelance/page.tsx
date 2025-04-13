@@ -66,7 +66,7 @@ export default function Component() {
                         </TextRevealCard>
                     </div>
                     <Button size="lg" className="bg-white text-black"
-                            onClick={() => window.location.href = 'mailto:hello@ueditor.lol'}>
+                            onClick={() => window.location.href = 'mailto:hello@unlockededitor.com'}>
                         Contact Us
                     </Button>
                 </section>

@@ -12,7 +12,7 @@ export default React.memo(function Footer() {
     Product: [
       { title: 'Features', href: '#featurebento' },
       //{ title: 'Pricing', href: '/pricing' },
-      { title: 'Documentation', href: 'https://docs.ueditor.lol' },
+      { title: 'Documentation', href: 'https://docs.unlockededitor.com' },
       //{ title: 'Changelog', href: '/changelog' }
     ],
     Company: [
@@ -21,9 +21,9 @@ export default React.memo(function Footer() {
       { title: 'Contact', href: 'https://dsc.gg/ueditor' }
     ],
     Resources: [
-      { title: 'Documentation', href: 'https://docs.ueditor.lol' },
+      { title: 'Documentation', href: 'https://docs.unlockededitor.com' },
       { title: 'Support', href: 'https://dsc.gg/ueditor' },
-      { title: 'Status', href: 'https://status.ueditor.lol' },
+      { title: 'Status', href: 'https://status.unlockededitor.com' },
     ],
     Legal: [
       { title: 'Privacy', href: 'https://ueditor.notion.site/Privacy-Policy-fcdcf68d04b4477b82f0ffafb35b766e?pvs=74' },

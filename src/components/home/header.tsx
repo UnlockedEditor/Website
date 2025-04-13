@@ -11,14 +11,14 @@ import React from "react";
 const LAUNCHER_VERSION = "0.1.0";
 
 const handleDownload = () => {
-  window.location.href = `https://api.ueditor.lol/download/download-launcher/${LAUNCHER_VERSION}`;
+  window.location.href = `https://api.unlockededitor.com/download/download-launcher/${LAUNCHER_VERSION}`;
 };
 
 export default React.memo(function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { link: "https://forum.ueditor.lol", label: "Forums" },
+    { link: "https://forum.unlockededitor.com", label: "Forums" },
     { link: "#featurebento", label: "Features" },
     { link: "#testimonials", label: "Testimonials" }
   ];

@@ -8,7 +8,7 @@ import React from "react";
 const LAUNCHER_VERSION = "0.1.0";
 
 const handleDownload = () => {
-  window.location.href = `https://api.ueditor.lol/download/download-launcher/${LAUNCHER_VERSION}`;
+  window.location.href = `https://api.unlockededitor.com/download/download-launcher/${LAUNCHER_VERSION}`;
 };
 
 export default React.memo(function Hero() {
@@ -106,7 +106,7 @@ export default React.memo(function Hero() {
               Download Now
             </button>
             <a
-                href="https://docs.ueditor.lol"
+                href="https://docs.unlockededitor.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-white/30 text-white px-8 py-3 rounded-lg font-medium hover:bg-white/10 transition inline-block"
